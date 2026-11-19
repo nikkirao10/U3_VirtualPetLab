@@ -18,8 +18,8 @@ public class VirtualPet {
     }
 
     public String toString(){
-        return name + "information: \n Energy: " + energyLevel + "\n Happiness: " +
-                happinessLevel + "\n Weight: " + weightinGrams + "g \n Age: " + ageInMonths +
+        return name + " Information: \nEnergy: " + energyLevel + "\nHappiness: " +
+                happinessLevel + "\nWeight: " + weightinGrams + "g \nAge: " + ageInMonths +
                 " months and " + ageInYears + " years";
     }
 
