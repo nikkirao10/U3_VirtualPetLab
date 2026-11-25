@@ -26,6 +26,7 @@ public class VirtualPet {
     public void feed(){
         weightinGrams++;
         energyLevel++;
+        getEnergyLevel();
     }
 
     public int getEnergyLevel() {
@@ -47,15 +48,28 @@ public class VirtualPet {
     }
 
     public void play(){
-            happinessLevel++;
-            weightinGrams--;
+        happinessLevel++;
+        weightinGrams--;
+
+        getHappinessLevel();
+
+        if(weightinGrams < 5){
+            weightinGrams = 5;
+        }
     }
 
     public void updateStatus(){
-        if(happinessLevel > 0 && happinessLevel < 10 && energyLevel > 0 && energyLevel < 10){
+        if(happinessLevel > 0 && happinessLevel < 10){
             happinessLevel--;
+        }
+
+        if(energyLevel > 0 && energyLevel < 10){
             energyLevel--;
         }
+
+        getEnergyLevel();
+        getHappinessLevel();
+
         ageInMonths++;
         if(ageInMonths == 12){
             this.ageInYears++;

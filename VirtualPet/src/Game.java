@@ -24,7 +24,7 @@ public class Game {
     }
 
     public boolean isWinner(){
-        int coin = (int)(Math.random() + 2) + 1;
+        int coin = (int)(Math.random()*2) + 1;
         if(coin == 1){
             return true;
         } else{

@@ -1,5 +1,4 @@
 // Part B
-
     public class VirtualPetB{
             private String name;
             private int energyLevel;
@@ -24,8 +23,12 @@
             }
 
             public void feed(Food food){
-                weightinGrams+= food.getEnergyIncrease();
-                energyLevel+= food.getHappinessIncrease();
+                energyLevel += food.getEnergyRating();
+                happinessLevel += food.getHappinessRating();
+                weightinGrams += food.getWeightGain();
+
+                getEnergyLevel();
+                getHappinessLevel();
             }
 
             public int getEnergyLevel() {
@@ -46,20 +49,40 @@
                 return happinessLevel;
             }
 
-            public void play(){
-                happinessLevel++;
-                weightinGrams--;
-            }
-
-            public void updateStatus(){
-                if(happinessLevel > 0 && happinessLevel < 10 && energyLevel > 0 && energyLevel < 10){
-                    happinessLevel--;
-                    energyLevel--;
-                }
-                ageInMonths++;
-                if(ageInMonths == 12){
-                    this.ageInYears++;
-                    this.ageInMonths = 0;
-                }
-            }
+    public boolean play(Game game){
+        weightinGrams -= game.getWeightDecr();
+        if(weightinGrams < 5){
+            weightinGrams = 5;
         }
+
+        boolean won = game.isWinner();
+
+        if(won){
+            happinessLevel += game.getHappinessIncr();
+        } else{
+            happinessLevel -= game.getHappinessIncr();
+        }
+
+        getHappinessLevel();
+        return won;
+    }
+
+    public void updateStatus(){
+        if(happinessLevel > 0 && happinessLevel < 10){
+            happinessLevel--;
+        }
+
+        if(energyLevel > 0 && energyLevel < 10){
+            energyLevel--;
+        }
+
+        getEnergyLevel();
+        getHappinessLevel();
+
+        ageInMonths++;
+        if(ageInMonths == 12){
+            this.ageInYears++;
+            this.ageInMonths = 0;
+        }
+    }
+}

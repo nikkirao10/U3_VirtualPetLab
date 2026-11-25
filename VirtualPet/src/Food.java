@@ -17,11 +17,11 @@ public class Food {
         return name;
     }
 
-    public int getEnergyIncrease() {
+    public int getEnergyRating() {
         return energyIncrease;
     }
 
-    public int getHappinessIncrease() {
+    public int getHappinessRating() {
         return happinessIncrease;
     }
 
